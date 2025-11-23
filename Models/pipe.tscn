@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfbji6cdnphal"]
+
+[ext_resource type="PackedScene" uid="uid://d1fvtecr4plyr" path="res://Models/Pipe_Corner.fbx" id="1_bepn3"]
+
+[node name="Pipe_Corner" instance=ExtResource("1_bepn3")]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0, 0)

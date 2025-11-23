@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1rxt2atvtkod"]
+
+[ext_resource type="Script" uid="uid://b3s5dml2edyr0" path="res://audio_manager.gd" id="1_2nh25"]
+[ext_resource type="AudioStream" uid="uid://b1cmddra4tp5i" path="res://Audio/PipeUI.wav" id="2_d16gy"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_2nh25")
+
+[node name="PipeUI" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_d16gy")
+bus = &"Sfx"

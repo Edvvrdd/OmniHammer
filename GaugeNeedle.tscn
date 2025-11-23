@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://byacxiul30hd5"]
+
+[ext_resource type="PackedScene" uid="uid://dpo7f7sndu5l2" path="res://Models/Pressure_Needle.fbx" id="1_q8e8m"]
+
+[node name="Pressure_Needle" instance=ExtResource("1_q8e8m")]

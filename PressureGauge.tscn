@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://buxhxx2wjc23x"]
+
+[ext_resource type="PackedScene" uid="uid://dx551fx1uyg4t" path="res://Models/Pressure_Gauge.fbx" id="1_4tnjj"]
+[ext_resource type="PackedScene" uid="uid://byacxiul30hd5" path="res://GaugeNeedle.tscn" id="2_2xi8q"]
+
+[node name="Pressure_Gauge" instance=ExtResource("1_4tnjj")]
+
+[node name="Pressure_Needle" parent="." index="1" instance=ExtResource("2_2xi8q")]
+transform = Transform3D(0.8644593, 0.50270313, 0, -0.50270325, 0.86445916, 0, 0, 0, 1.0000002, 0, 0, 0)

@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdrqfqwwo6fly"]
+
+[ext_resource type="Script" uid="uid://dw0panuiyafvm" path="res://Scenes/option_panel.gd" id="1_44rrn"]
+
+[node name="OptionPanel" type="Panel"]
+script = ExtResource("1_44rrn")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 155
+theme_override_constants/margin_top = 85
+theme_override_constants/margin_right = 170
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 19
+
+[node name="Mx Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music
+"
+
+[node name="Mx Slider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+
+[node name="Sfx Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFx"
+
+[node name="Sfx Slider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Mx Slider" to="." method="_on_mx_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Sfx Slider" to="." method="_on_sfx_slider_value_changed"]

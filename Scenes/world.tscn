@@ -1,0 +1,68 @@
+[gd_scene load_steps=14 format=3 uid="uid://ch1x0o85ojlt3"]
+
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_tlwt5"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_aqk2v"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_036b0"]
+[ext_resource type="Texture2D" uid="uid://buxi85pmwpg5t" path="res://creepy_bathroom_4k.exr" id="4_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://dfbji6cdnphal" path="res://Models/pipe.tscn" id="7_pkg7o"]
+
+[sub_resource type="Resource" id="Resource_dwbse"]
+script = ExtResource("3_036b0")
+
+[sub_resource type="Resource" id="Resource_tlwt5"]
+script = ExtResource("3_036b0")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_036b0"]
+panorama = ExtResource("4_aqk2v")
+
+[sub_resource type="Sky" id="Sky_dwbse"]
+sky_material = SubResource("PanoramaSkyMaterial_036b0")
+
+[sub_resource type="Environment" id="Environment_pkg7o"]
+background_mode = 2
+sky = SubResource("Sky_dwbse")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fo5ed"]
+scale_min = 0.099999994
+scale_max = 0.19999999
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lje4j"]
+albedo_color = Color(0.18039216, 0.4509804, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5ukr8"]
+material = SubResource("StandardMaterial3D_lje4j")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21609306, 0.5321257, 2.8604517)
+current = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_tlwt5")
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21609306, 0.5321257, 2.8604517)
+script = ExtResource("2_aqk2v")
+tween_resource = SubResource("Resource_dwbse")
+
+[node name="PhantomCamera3D2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36447167, -0.4287722, 0)
+script = ExtResource("2_aqk2v")
+tween_resource = SubResource("Resource_tlwt5")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pkg7o")
+
+[node name="Pipe_Corner" parent="." instance=ExtResource("7_pkg7o")]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, -1.0886571, 1.1920929e-07, -0.4055419)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29027644, -0.118614316, 0.53421426)
+process_material = SubResource("ParticleProcessMaterial_fo5ed")
+draw_pass_1 = SubResource("CapsuleMesh_5ukr8")

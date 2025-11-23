@@ -1,0 +1,144 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxuae42or5pu4"]
+
+[ext_resource type="Texture2D" uid="uid://buxi85pmwpg5t" path="res://creepy_bathroom_4k.exr" id="1_hmu37"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_lje4j"]
+[ext_resource type="PackedScene" uid="uid://dfbji6cdnphal" path="res://Models/pipe.tscn" id="3_yv6vv"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dtcn5"]
+panorama = ExtResource("1_hmu37")
+
+[sub_resource type="Sky" id="Sky_dwbse"]
+sky_material = SubResource("PanoramaSkyMaterial_dtcn5")
+
+[sub_resource type="Environment" id="Environment_ijcbb"]
+background_mode = 2
+sky = SubResource("Sky_dwbse")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtcn5"]
+albedo_color = Color(0.06640833, 0.059841767, 0.047797106, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ijcbb"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hmu37"]
+scale_min = 0.099999994
+scale_max = 0.19999999
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lje4j"]
+albedo_color = Color(0.18039216, 0.4509804, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yv6vv"]
+material = SubResource("StandardMaterial3D_lje4j")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ijcbb")
+
+[node name="Camera3D" type="Camera3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.044436097, 0, 1.445755)
+projection = 1
+size = 4.0
+
+[node name="PhantomCameraHost" type="Node" parent="WorldEnvironment/Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_lje4j")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(6.0752482, 0, 0, 0, 3.684276, 0, 0, 0, 1, 0, -0.03427722, 0.729)
+material_override = SubResource("StandardMaterial3D_dtcn5")
+mesh = SubResource("BoxMesh_ijcbb")
+skeleton = NodePath("")
+
+[node name="Pipes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.096325874, -0.2, 1.3000001)
+
+[node name="Row1" type="Node3D" parent="Pipes"]
+
+[node name="Pipe_Corner" parent="Pipes/Row1" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -2, 1, 0)
+
+[node name="Pipe_Corner2" parent="Pipes/Row1" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1, 1, 0)
+
+[node name="Pipe_Corner3" parent="Pipes/Row1" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0, 1, 0)
+
+[node name="Pipe_Corner4" parent="Pipes/Row1" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, 1, 0)
+
+[node name="Pipe_Corner5" parent="Pipes/Row1" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2, 1, 0)
+
+[node name="Row2" type="Node3D" parent="Pipes"]
+
+[node name="Pipe_Corner6" parent="Pipes/Row2" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -2, 0.39999998, 0)
+
+[node name="Pipe_Corner7" parent="Pipes/Row2" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1, 0.39999998, 0)
+
+[node name="Pipe_Corner8" parent="Pipes/Row2" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0, 0.39999998, 0)
+
+[node name="Pipe_Corner9" parent="Pipes/Row2" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, 0.39999998, 0)
+
+[node name="Pipe_Corner10" parent="Pipes/Row2" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2, 0.39999998, 0)
+
+[node name="Row3" type="Node3D" parent="Pipes"]
+
+[node name="Pipe_Corner11" parent="Pipes/Row3" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -2, -0.20000005, 0)
+
+[node name="Pipe_Corner12" parent="Pipes/Row3" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1, -0.20000005, 0)
+
+[node name="Pipe_Corner13" parent="Pipes/Row3" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0, -0.20000005, 0)
+
+[node name="Pipe_Corner14" parent="Pipes/Row3" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, -0.20000005, 0)
+
+[node name="Pipe_Corner15" parent="Pipes/Row3" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2, -0.20000005, 0)
+
+[node name="Row4" type="Node3D" parent="Pipes"]
+
+[node name="Pipe_Corner16" parent="Pipes/Row4" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(1.9106856e-16, -0.1, 4.371139e-09, -4.371139e-09, -4.371139e-09, -0.1, 0.1, 0, -4.371139e-09, -1.5, -0.70000005, 0)
+
+[node name="Pipe_Corner17" parent="Pipes/Row4" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1, -0.8000001, 0)
+
+[node name="Pipe_Corner18" parent="Pipes/Row4" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0, -0.8000001, 0)
+
+[node name="Pipe_Corner19" parent="Pipes/Row4" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, -0.8000001, 0)
+
+[node name="Pipe_Corner20" parent="Pipes/Row4" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2, -0.8000001, 0)
+
+[node name="Pipe_Corner21" parent="Pipes/Row4" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(1.9106856e-16, -0.1, 4.371139e-09, -4.371139e-09, -4.371139e-09, -0.1, 0.1, 0, -4.371139e-09, -1.5, -1.3000001, 0)
+
+[node name="Pipe_Corner22" parent="Pipes/Row4" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1, -1.4000001, 0)
+
+[node name="Pipe_Corner23" parent="Pipes/Row4" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0, -1.4000001, 0)
+
+[node name="Pipe_Corner24" parent="Pipes/Row4" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, -1.4000001, 0)
+
+[node name="Pipe_Corner25" parent="Pipes/Row4" instance=ExtResource("3_yv6vv")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2, -1.4000001, 0)
+
+[node name="Row5" type="Node3D" parent="Pipes"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+process_material = SubResource("ParticleProcessMaterial_hmu37")
+draw_pass_1 = SubResource("CapsuleMesh_yv6vv")
