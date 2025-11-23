@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://coso4ggq0us2k"]
+[gd_scene load_steps=15 format=3 uid="uid://coso4ggq0us2k"]
 
 [ext_resource type="Texture2D" uid="uid://dg210d1u606ux" path="res://Models/modern_bathroom_4k.exr" id="1_73w5w"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_cdr0u"]
 [ext_resource type="Script" uid="uid://c301v2a52rq6m" path="res://game_mode.gd" id="3_rprox"]
 [ext_resource type="PackedScene" uid="uid://t6m1pq5ecl6w" path="res://Scenes/gameobjects/pipe_object.tscn" id="4_d04ik"]
+[ext_resource type="PackedScene" uid="uid://8812csi01swp" path="res://Scenes/gameobjects/pressure_game.tscn" id="5_73w5w"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_rprox"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_d04ik"]
 [ext_resource type="PackedScene" uid="uid://dn0jxmi14vwqu" path="res://Models/Hammer/Hammer_002.fbx" id="7_d04ik"]
@@ -47,9 +48,10 @@ material_override = SubResource("StandardMaterial3D_dtcn5")
 mesh = SubResource("BoxMesh_ijcbb")
 skeleton = NodePath("")
 
-[node name="GameMode" type="Node" parent="." node_paths=PackedStringArray("all_pipes")]
+[node name="GameMode" type="Node" parent="." node_paths=PackedStringArray("all_pipes", "all_gauges")]
 script = ExtResource("3_rprox")
-all_pipes = [NodePath("../Pipes/Row1/pipe_object"), NodePath("../Pipes/Row1/pipe_object2"), NodePath("../Pipes/Row1/pipe_object3"), NodePath("../Pipes/Row1/pipe_object4"), NodePath("../Pipes/Row1/pipe_object5"), NodePath("../Pipes/Row2/pipe_object"), NodePath("../Pipes/Row2/pipe_object2"), NodePath("../Pipes/Row2/pipe_object3"), NodePath("../Pipes/Row2/pipe_object4"), NodePath("../Pipes/Row2/pipe_object5"), NodePath("../Pipes/Row3/pipe_object"), NodePath("../Pipes/Row3/pipe_object2"), NodePath("../Pipes/Row3/pipe_object3"), NodePath("../Pipes/Row3/pipe_object4"), NodePath("../Pipes/Row3/pipe_object5"), NodePath("../Pipes/Row4/pipe_object"), NodePath("../Pipes/Row4/pipe_object2"), NodePath("../Pipes/Row4/pipe_object3"), NodePath("../Pipes/Row4/pipe_object4"), NodePath("../Pipes/Row4/pipe_object5")]
+all_pipes = [NodePath("../Pipes/Row1/pipe_object"), NodePath("../Pipes/Row1/pipe_object2"), NodePath("../Pipes/Row1/pipe_object3"), NodePath("../Pipes/Row1/pipe_object4"), NodePath("../Pipes/Row2/pipe_object"), NodePath("../Pipes/Row2/pipe_object2"), NodePath("../Pipes/Row2/pipe_object3"), NodePath("../Pipes/Row2/pipe_object4"), NodePath("../Pipes/Row2/pipe_object5"), NodePath("../Pipes/Row3/pipe_object"), NodePath("../Pipes/Row3/pipe_object2"), NodePath("../Pipes/Row3/pipe_object3"), NodePath("../Pipes/Row3/pipe_object4"), NodePath("../Pipes/Row3/pipe_object5"), NodePath("../Pipes/Row4/pipe_object"), NodePath("../Pipes/Row4/pipe_object2"), NodePath("../Pipes/Row4/pipe_object3"), NodePath("../Pipes/Row4/pipe_object4"), NodePath("../Pipes/Row4/pipe_object5")]
+all_gauges = [NodePath("../Pipes/Row1/PressureGame")]
 
 [node name="Pipes" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.096325874, -0.2, 1.3000001)
@@ -69,8 +71,8 @@ transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09
 [node name="pipe_object4" parent="Pipes/Row1" instance=ExtResource("4_d04ik")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, 1.7106414, 0)
 
-[node name="pipe_object5" parent="Pipes/Row1" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2, 1.7106414, 0)
+[node name="PressureGame" parent="Pipes/Row1" instance=ExtResource("5_73w5w")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 2.146572, 1.8104014, 0)
 
 [node name="Row2" type="Node3D" parent="Pipes"]
 

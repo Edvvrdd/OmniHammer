@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://buxhxx2wjc23x"]
 
 [ext_resource type="PackedScene" uid="uid://dx551fx1uyg4t" path="res://Models/Pressure_Gauge.fbx" id="1_4tnjj"]
-[ext_resource type="PackedScene" uid="uid://byacxiul30hd5" path="res://GaugeNeedle.tscn" id="2_2xi8q"]
+[ext_resource type="PackedScene" uid="uid://byacxiul30hd5" path="res://Scenes/gameobjects/GaugeNeedle.tscn" id="2_2xi8q"]
 
 [node name="Pressure_Gauge" instance=ExtResource("1_4tnjj")]
 
