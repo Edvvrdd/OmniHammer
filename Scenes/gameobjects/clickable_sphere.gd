@@ -6,6 +6,7 @@ signal sphere_clicked(targetPos)
 
 var isMouseOver : bool = false
 var isActive: bool = false
+@onready var burst_sfx: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,11 +19,13 @@ func _process(_delta: float) -> void:
 func Hide_Clickable_Object() -> void:
 	self.hide()
 	print("Hiding: "+self.name)
+	burst_sfx.stop()
 
 func Activate_Clickable_Object() -> void:
 	print("Activating: "+self.name)
 	isActive = true
 	self.show()
+	burst_sfx.play()
 
 func _mouse_enter() -> void:
 	isMouseOver = true

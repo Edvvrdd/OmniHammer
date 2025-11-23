@@ -11,6 +11,7 @@
 
 [sub_resource type="Resource" id="Resource_bmeoy"]
 script = ExtResource("6_42pl0")
+duration = 0.3
 
 [node name="pipe_object" type="Area3D" node_paths=PackedStringArray("all_clickable_objs")]
 script = ExtResource("1_o86ej")
@@ -39,7 +40,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("SphereShape3D_4pmr7")
 
 [node name="PhantomCamera3D" type="Node3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.250439, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.863233, 0, 0)
 script = ExtResource("5_sp4ij")
 tween_resource = SubResource("Resource_bmeoy")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
