@@ -1,0 +1,40 @@
+[gd_scene load_steps=13 format=3 uid="uid://bwh2hs1imgfet"]
+
+[ext_resource type="AudioStream" uid="uid://cfk2kdrvaov2q" path="res://Audio/pipe_shake_01.wav" id="1_d7vfx"]
+[ext_resource type="AudioStream" uid="uid://pql7rj3uom7" path="res://Audio/pipe_shake_02.wav" id="2_in7xe"]
+[ext_resource type="AudioStream" uid="uid://cr7jv7ojcjlmh" path="res://Audio/pipe_shake_03.wav" id="3_aspkt"]
+[ext_resource type="AudioStream" uid="uid://ciwhr4ocfm7vk" path="res://Audio/pipe_leak.wav" id="4_w7fpe"]
+[ext_resource type="AudioStream" uid="uid://bs64e83ymmrot" path="res://Audio/pipe_burst_short.wav" id="5_mfpo5"]
+[ext_resource type="AudioStream" uid="uid://cvcegu03oxdht" path="res://Audio/pipe_burst_long.wav" id="6_steg4"]
+[ext_resource type="AudioStream" uid="uid://ph1q5dwp5u6o" path="res://Audio/water_on_01.wav" id="7_o0o0x"]
+[ext_resource type="AudioStream" uid="uid://drb1h7n2sdpbi" path="res://Audio/water_on_02.wav" id="8_q1sxd"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q84wr"]
+streams_count = 3
+stream_0/stream = ExtResource("1_d7vfx")
+stream_1/stream = ExtResource("2_in7xe")
+stream_2/stream = ExtResource("3_aspkt")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y7nvm"]
+streams_count = 3
+stream_0/stream = ExtResource("4_w7fpe")
+stream_1/stream = ExtResource("5_mfpo5")
+stream_2/stream = ExtResource("6_steg4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aq8va"]
+streams_count = 2
+stream_0/stream = ExtResource("7_o0o0x")
+stream_1/stream = ExtResource("8_q1sxd")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_2cqmn"]
+loop = false
+fade_time = 0.0
+stream_count = 3
+stream_0 = SubResource("AudioStreamRandomizer_q84wr")
+stream_1 = SubResource("AudioStreamRandomizer_y7nvm")
+stream_2 = SubResource("AudioStreamRandomizer_aq8va")
+
+[node name="PipeSFX" type="AudioStreamPlayer3D"]
+stream = SubResource("AudioStreamPlaylist_2cqmn")
+max_distance = 8.0
+bus = &"Sfx"

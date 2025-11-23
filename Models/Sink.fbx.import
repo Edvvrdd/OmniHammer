@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b63a6asej714e"
-path="res://.godot/imported/Wall_001.fbx-3f06ab197fff708da0e82fd437156236.scn"
+uid="uid://cxmkcdhp37lac"
+path="res://.godot/imported/Sink.fbx-68d149e129389d4670f2a7acacd009a3.scn"
 
 [deps]
 
-source_file="res://Models/Wall_001.fbx"
-dest_files=["res://.godot/imported/Wall_001.fbx-3f06ab197fff708da0e82fd437156236.scn"]
+source_file="res://Models/Sink.fbx"
+dest_files=["res://.godot/imported/Sink.fbx-68d149e129389d4670f2a7acacd009a3.scn"]
 
 [params]
 

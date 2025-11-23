@@ -21,6 +21,8 @@ var state : pipe_states = pipe_states.NEW
 var isFocus : bool = false
 var isMouseHovering : bool = false
 var isBroken: bool = false
+@export var pipe_sfx : AudioStreamPlayer3D
+var sfx 
 
 @export var all_clickable_objs : Array[ClickableSphere] 
 var num_leaks_fixed : int = 0
@@ -29,6 +31,7 @@ var num_leaks_actually_sprung: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	phantom_camera_3d.priority = 0
 	Hide_PipeHitbox()
 	TogglePipeHitbox(false)
@@ -63,6 +66,7 @@ func PickMinigame() -> void:
 		return
 	else:
 		isBroken = true
+		
 	TogglePipeHitbox(false)
 	#resets clickable sphere
 	num_leaks_fixed = 0
@@ -70,7 +74,6 @@ func PickMinigame() -> void:
 	
 	#pick random spheres to activate
 	num_leaks_sprung = randi_range(1, all_clickable_objs.size())
-	
 	for i in range(0, num_leaks_sprung):
 		var clickable_leak_obj : ClickableSphere = all_clickable_objs.pick_random()
 		if !clickable_leak_obj.GetActive():

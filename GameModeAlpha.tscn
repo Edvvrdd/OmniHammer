@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b5dumq348bnqf"]
+[gd_scene load_steps=29 format=3 uid="uid://b5dumq348bnqf"]
 
 [ext_resource type="Texture2D" uid="uid://dg210d1u606ux" path="res://Models/modern_bathroom_4k.exr" id="1_48eut"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_a7ue5"]
@@ -6,15 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://bscgkyhjcsrv2" path="res://Models/Wall/Wall_005.fbx" id="4_cxyhq"]
 [ext_resource type="PackedScene" uid="uid://68n87ri3n3o6" path="res://Models/Pipe_None_Extra.fbx" id="5_dck2h"]
 [ext_resource type="Script" uid="uid://c301v2a52rq6m" path="res://game_mode.gd" id="6_riwwe"]
+[ext_resource type="Texture2D" uid="uid://dv0r16qgiccxl" path="res://Models/Porcelain_Vitrified_Tiles_baseColor.png" id="7_0u4us"]
 [ext_resource type="PackedScene" uid="uid://8812csi01swp" path="res://Scenes/gameobjects/pressure_game.tscn" id="7_pn2qr"]
+[ext_resource type="Texture2D" uid="uid://rrkp3olqg5fu" path="res://Models/Wallpaper.jpg" id="8_cxyhq"]
 [ext_resource type="PackedScene" uid="uid://t6m1pq5ecl6w" path="res://Scenes/gameobjects/pipe_object.tscn" id="8_mk5gx"]
 [ext_resource type="PackedScene" uid="uid://cxaecg535pl66" path="res://Scenes/gameobjects/pipe_object_cornerL.tscn" id="9_6itya"]
 [ext_resource type="PackedScene" uid="uid://d0sdxka5462oc" path="res://Scenes/gameobjects/pipe_object_cornerR.tscn" id="10_2lqpg"]
+[ext_resource type="PackedScene" uid="uid://3nrmx7p1skab" path="res://Models/Cabinet.fbx" id="10_riwwe"]
 [ext_resource type="PackedScene" uid="uid://b5vgplfs3ksjo" path="res://Scenes/gameobjects/pipe_object_cross.tscn" id="11_lg6dr"]
+[ext_resource type="PackedScene" uid="uid://cxmkcdhp37lac" path="res://Models/Sink.fbx" id="11_pn2qr"]
 [ext_resource type="PackedScene" uid="uid://bor8o01hbt6w5" path="res://Models/Pipe_Straight_Textured.fbx" id="12_o7hho"]
 [ext_resource type="PackedScene" uid="uid://cp20edr332l23" path="res://Scenes/gameobjects/pipe_object_horizontal.tscn" id="13_m8ig1"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="14_d0pq1"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="15_or2ls"]
+[ext_resource type="PackedScene" uid="uid://t0ud07chrtyv" path="res://Models/Wall_Destroyed.fbx" id="17_0u4us"]
+[ext_resource type="AudioStream" uid="uid://whdv1jtu2s" path="res://Audio/steam_hiss_loop (1).wav" id="19_pn2qr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qnp83"]
 panorama = ExtResource("1_48eut")
@@ -26,11 +32,25 @@ sky_material = SubResource("PanoramaSkyMaterial_qnp83")
 background_mode = 2
 sky = SubResource("Sky_w1qmb")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0u4us"]
+albedo_texture = ExtResource("7_0u4us")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cxyhq"]
+material = SubResource("StandardMaterial3D_0u4us")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dck2h"]
+albedo_texture = ExtResource("8_cxyhq")
+
 [sub_resource type="Resource" id="Resource_73w5w"]
 script = ExtResource("15_or2ls")
 duration = 0.7
 
 [node name="Node3D" type="Node3D"]
+
+[node name="GameMode" type="Node" parent="." node_paths=PackedStringArray("all_pipes", "all_gauges")]
+script = ExtResource("6_riwwe")
+all_pipes = [NodePath("../Pipes/pipe_object3"), NodePath("../Pipes/pipe_object6"), NodePath("../Pipes/pipe_object4"), NodePath("../Pipes/pipe_object5"), NodePath("../Pipes/pipe_object9"), NodePath("../Pipes/pipe_object10"), NodePath("../Pipes/pipe_object11"), NodePath("../Pipes/pipe_object12"), NodePath("../Pipes/pipe_object17"), NodePath("../Pipes/pipe_object18"), NodePath("../Pipes/pipe_object19"), NodePath("../Pipes/pipe_object13"), NodePath("../Pipes/pipe_object14"), NodePath("../Pipes/pipe_object7"), NodePath("../Pipes/pipe_object8"), NodePath("../Pipes/pipe_object"), NodePath("../Pipes/pipe_object2"), NodePath("../Pipes/pipe_object16")]
+all_gauges = [NodePath("../Pipes/PressureGame"), NodePath("../Pipes/PressureGame2")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ijcbb")
@@ -59,10 +79,121 @@ transform = Transform3D(1, 0, 0, 0, 1.876496, 0, 0, 0, 1, 2.208871, -2.4409757, 
 [node name="Pipe_None_Extra" parent="WorldEnvironment" instance=ExtResource("5_dck2h")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.736752, -3.6415648, 0.45641637)
 
-[node name="GameMode" type="Node" parent="." node_paths=PackedStringArray("all_pipes", "all_gauges")]
-script = ExtResource("6_riwwe")
-all_pipes = [NodePath("../Pipes/pipe_object3"), NodePath("../Pipes/pipe_object6"), NodePath("../Pipes/pipe_object4"), NodePath("../Pipes/pipe_object5"), NodePath("../Pipes/pipe_object9"), NodePath("../Pipes/pipe_object10"), NodePath("../Pipes/pipe_object11"), NodePath("../Pipes/pipe_object12"), NodePath("../Pipes/pipe_object17"), NodePath("../Pipes/pipe_object18"), NodePath("../Pipes/pipe_object19"), NodePath("../Pipes/pipe_object13"), NodePath("../Pipes/pipe_object14"), NodePath("../Pipes/pipe_object7"), NodePath("../Pipes/pipe_object8"), NodePath("../Pipes/pipe_object"), NodePath("../Pipes/pipe_object2"), NodePath("../Pipes/pipe_object16")]
-all_gauges = [NodePath("../Pipes/PressureGame"), NodePath("../Pipes/PressureGame2")]
+[node name="Floor" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.317977, 2.1654897)
+mesh = SubResource("PlaneMesh_cxyhq")
+
+[node name="Floor2" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.952754, -2.317977, 2.1654897)
+mesh = SubResource("PlaneMesh_cxyhq")
+
+[node name="Floor3" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8090959, -2.317977, 2.1654897)
+mesh = SubResource("PlaneMesh_cxyhq")
+
+[node name="Floor4" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9546247, -2.317977, 2.1654897)
+mesh = SubResource("PlaneMesh_cxyhq")
+
+[node name="Floor5" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8731556, -2.317977, 2.1654897)
+mesh = SubResource("PlaneMesh_cxyhq")
+
+[node name="Floor6" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8731556, -2.317977, 2.1654897)
+mesh = SubResource("PlaneMesh_cxyhq")
+
+[node name="Floor7" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.317977, 4.090662)
+mesh = SubResource("PlaneMesh_cxyhq")
+
+[node name="Floor8" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.952754, -2.317977, 4.090662)
+mesh = SubResource("PlaneMesh_cxyhq")
+
+[node name="Floor9" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8090959, -2.317977, 4.090662)
+mesh = SubResource("PlaneMesh_cxyhq")
+
+[node name="Floor10" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9546247, -2.317977, 4.090662)
+mesh = SubResource("PlaneMesh_cxyhq")
+
+[node name="Floor11" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8731556, -2.317977, 4.090662)
+mesh = SubResource("PlaneMesh_cxyhq")
+
+[node name="Floor12" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8731556, -2.317977, 4.090662)
+mesh = SubResource("PlaneMesh_cxyhq")
+
+[node name="Floor13" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, -4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, 0, 1, 1.9106855e-15, 4.0170393, -1.4248996, 1.4774945)
+mesh = SubResource("PlaneMesh_cxyhq")
+surface_material_override/0 = SubResource("StandardMaterial3D_dck2h")
+
+[node name="Floor14" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, -4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, 0, 1, 1.9106855e-15, 4.0170393, 0.56321573, 1.4774945)
+mesh = SubResource("PlaneMesh_cxyhq")
+surface_material_override/0 = SubResource("StandardMaterial3D_dck2h")
+
+[node name="Floor15" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, -4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, 0, 1, 1.9106855e-15, 4.0170393, 2.4811647, 1.4774945)
+mesh = SubResource("PlaneMesh_cxyhq")
+surface_material_override/0 = SubResource("StandardMaterial3D_dck2h")
+
+[node name="Floor16" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, -4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, 0, 1, 1.9106855e-15, 2.0316904, 3.049996, 1.4774945)
+mesh = SubResource("PlaneMesh_cxyhq")
+surface_material_override/0 = SubResource("StandardMaterial3D_dck2h")
+
+[node name="Floor17" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, -4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, 0, 1, 1.9106855e-15, 0.062165976, 3.049996, 1.4774945)
+mesh = SubResource("PlaneMesh_cxyhq")
+surface_material_override/0 = SubResource("StandardMaterial3D_dck2h")
+
+[node name="Floor18" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, -4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, 0, 1, 1.9106855e-15, -1.9056728, 3.049996, 1.4774945)
+mesh = SubResource("PlaneMesh_cxyhq")
+surface_material_override/0 = SubResource("StandardMaterial3D_dck2h")
+
+[node name="Floor19" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, -4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, 0, 1, 1.9106855e-15, -3.789809, 3.049996, 1.4774945)
+mesh = SubResource("PlaneMesh_cxyhq")
+surface_material_override/0 = SubResource("StandardMaterial3D_dck2h")
+
+[node name="Floor20" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, -4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, 0, 1, 1.9106855e-15, -3.789809, 1.118633, 1.4774945)
+mesh = SubResource("PlaneMesh_cxyhq")
+surface_material_override/0 = SubResource("StandardMaterial3D_dck2h")
+
+[node name="Floor21" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, -4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, 0, 1, 1.9106855e-15, -3.789809, -0.84234476, 1.4774945)
+mesh = SubResource("PlaneMesh_cxyhq")
+surface_material_override/0 = SubResource("StandardMaterial3D_dck2h")
+
+[node name="Floor22" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, -4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, 0, 1, 1.9106855e-15, -3.789809, -1.4200336, 1.4774945)
+mesh = SubResource("PlaneMesh_cxyhq")
+surface_material_override/0 = SubResource("StandardMaterial3D_dck2h")
+
+[node name="Wall_Destroyed" parent="WorldEnvironment" instance=ExtResource("17_0u4us")]
+transform = Transform3D(2.9262917, 0, 0, 0, 2.2083786, 0, 0, 0, 1, 0.12659693, -2.3531604, 1.4764686)
+
+[node name="Cabinet" parent="WorldEnvironment" instance=ExtResource("10_riwwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.190399, -2.3515825, 1.3392477)
+
+[node name="Cabinet2" parent="WorldEnvironment" instance=ExtResource("10_riwwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1490316, 1.8510289, 1.320569)
+
+[node name="Cabinet4" parent="WorldEnvironment" instance=ExtResource("10_riwwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1490316, 1.8510289, 1.320569)
+
+[node name="Cabinet3" parent="WorldEnvironment" instance=ExtResource("10_riwwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.190399, -0.2745118, 1.3392477)
+
+[node name="Sink" parent="WorldEnvironment" instance=ExtResource("11_pn2qr")]
+transform = Transform3D(-1.0993538e-08, -3.499013e-09, -0.495, -0.042087134, 0.47834855, -2.7908807e-16, 0.25150284, 0.080048084, -2.1637137e-08, 4.2112107, -1.5421023, 1.9866948)
 
 [node name="Pipes" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.096325874, -0.2, 1.3000001)
@@ -129,6 +260,11 @@ transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09
 
 [node name="pipe_object16" parent="Pipes" instance=ExtResource("10_2lqpg")]
 transform = Transform3D(1.9106856e-16, 0.1, 4.371139e-09, 4.371139e-09, -4.371139e-09, 0.1, 0.1, 0, -4.371139e-09, -1.0093983, -1.2461433, 0)
+
+[node name="LeakLoopSFX" type="AudioStreamPlayer3D" parent="Pipes"]
+stream = ExtResource("19_pn2qr")
+max_distance = 5.0
+bus = &"Sfx"
 
 [node name="TotalView" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05570793, 0, 5.189216)

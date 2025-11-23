@@ -11,6 +11,7 @@ class_name PipeGameMode
 var timer : Timer
 var timeBetweenLeaks_Current : float
 var isTimerActive : bool = false
+@onready var leak_loop_sfx: AudioStreamPlayer3D = $"../Pipes/LeakLoopSFX"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,6 +32,7 @@ func _process(delta: float) -> void:
 			for i in range(0, num_leaksAtOnce):
 				var pipe = all_pipes.pick_random()
 				pipe.PickMinigame()
+				leak_loop_sfx.play()
 				pipe.Show_PipeHitbox()
 			
 			timeBetweenLeaks_start = timeBetweenLeaks_start * timeBetweenLeaks_ramp
@@ -40,5 +42,6 @@ func Timer_Start() -> void:
 	isTimerActive = true
 
 func PipeFixed_Callback() -> void:
+	leak_loop_sfx.stop()
 	pass
 	#TODO ZOOM CAMERA OUT

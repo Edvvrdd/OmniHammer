@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="plumbing survivor"
-run/main_scene="uid://coso4ggq0us2k"
+run/main_scene="uid://bfr86eqfd7d8o"
 config/features=PackedStringArray("4.5", "Mobile")
 
 [audio]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bytvs48yvyixk"]
+
+[ext_resource type="PackedScene" uid="uid://bwh2hs1imgfet" path="res://Scenes/gameobjects/pipe_sfx.tscn" id="1_wcm2q"]
+
+[node name="PipeSfx" type="Node3D"]
+
+[node name="PipeSFX" parent="." instance=ExtResource("1_wcm2q")]
+autoplay = true
