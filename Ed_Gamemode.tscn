@@ -1,20 +1,20 @@
-[gd_scene load_steps=21 format=3 uid="uid://coso4ggq0us2k"]
+[gd_scene load_steps=21 format=3 uid="uid://lcukk8yfipet"]
 
-[ext_resource type="Texture2D" uid="uid://dg210d1u606ux" path="res://Models/modern_bathroom_4k.exr" id="1_73w5w"]
-[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_cdr0u"]
-[ext_resource type="Script" uid="uid://c301v2a52rq6m" path="res://game_mode.gd" id="3_rprox"]
-[ext_resource type="PackedScene" uid="uid://t6m1pq5ecl6w" path="res://Scenes/gameobjects/pipe_object.tscn" id="4_d04ik"]
-[ext_resource type="PackedScene" uid="uid://8812csi01swp" path="res://Scenes/gameobjects/pressure_game.tscn" id="5_73w5w"]
-[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_rprox"]
-[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_d04ik"]
-[ext_resource type="PackedScene" uid="uid://nmmcf7fpprut" path="res://Scenes/gameobjects/OmniHammer.tscn" id="8_73w5w"]
-[ext_resource type="Texture2D" uid="uid://dtw0ntwttns1y" path="res://Models/TH_Pavement_baseColor.png" id="9_qnp83"]
-[ext_resource type="PackedScene" uid="uid://3nrmx7p1skab" path="res://Models/Cabinet.fbx" id="10_c805a"]
-[ext_resource type="PackedScene" uid="uid://cxmkcdhp37lac" path="res://Models/Sink.fbx" id="11_5njso"]
-[ext_resource type="PackedScene" uid="uid://t0ud07chrtyv" path="res://Models/Wall_Destroyed.fbx" id="12_5njso"]
+[ext_resource type="Texture2D" uid="uid://dg210d1u606ux" path="res://Models/modern_bathroom_4k.exr" id="1_ha8n8"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_em3lx"]
+[ext_resource type="PackedScene" uid="uid://nmmcf7fpprut" path="res://Scenes/gameobjects/OmniHammer.tscn" id="3_3tufd"]
+[ext_resource type="Script" uid="uid://c301v2a52rq6m" path="res://game_mode.gd" id="4_nbrkm"]
+[ext_resource type="PackedScene" uid="uid://t6m1pq5ecl6w" path="res://Scenes/gameobjects/pipe_object.tscn" id="5_uix74"]
+[ext_resource type="PackedScene" uid="uid://8812csi01swp" path="res://Scenes/gameobjects/pressure_game.tscn" id="6_hu5d5"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="7_17rc7"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_egxia"]
+[ext_resource type="Texture2D" uid="uid://dtw0ntwttns1y" path="res://Models/TH_Pavement_baseColor.png" id="9_nsv6v"]
+[ext_resource type="PackedScene" uid="uid://3nrmx7p1skab" path="res://Models/Cabinet.fbx" id="10_bfpmo"]
+[ext_resource type="PackedScene" uid="uid://cxmkcdhp37lac" path="res://Models/Sink.fbx" id="11_jbpbo"]
+[ext_resource type="PackedScene" uid="uid://t0ud07chrtyv" path="res://Models/Wall_Destroyed.fbx" id="12_p3hu2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qnp83"]
-panorama = ExtResource("1_73w5w")
+panorama = ExtResource("1_ha8n8")
 
 [sub_resource type="Sky" id="Sky_w1qmb"]
 sky_material = SubResource("PanoramaSkyMaterial_qnp83")
@@ -30,14 +30,14 @@ albedo_color = Color(0.06640833, 0.059841767, 0.047797106, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_ijcbb"]
 
 [sub_resource type="Resource" id="Resource_73w5w"]
-script = ExtResource("6_d04ik")
+script = ExtResource("8_egxia")
 duration = 0.3
 transition = 9
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w1qmb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c805a"]
-albedo_texture = ExtResource("9_qnp83")
+albedo_texture = ExtResource("9_nsv6v")
 
 [node name="Node3D" type="Node3D"]
 
@@ -52,9 +52,9 @@ size = 4.0
 [node name="PhantomCameraHost" type="Node" parent="WorldEnvironment/Camera3D"]
 process_priority = 300
 process_physics_priority = 300
-script = ExtResource("2_cdr0u")
+script = ExtResource("2_em3lx")
 
-[node name="Hammer_002" parent="WorldEnvironment/Camera3D" instance=ExtResource("8_73w5w")]
+[node name="Hammer_002" parent="WorldEnvironment/Camera3D" instance=ExtResource("3_3tufd")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.48594308, -0.28339946, -0.40544367)
 
 [node name="AudioListener3D" type="AudioListener3D" parent="WorldEnvironment/Camera3D"]
@@ -67,7 +67,7 @@ mesh = SubResource("BoxMesh_ijcbb")
 skeleton = NodePath("")
 
 [node name="GameMode" type="Node" parent="." node_paths=PackedStringArray("all_pipes", "all_gauges")]
-script = ExtResource("3_rprox")
+script = ExtResource("4_nbrkm")
 all_pipes = [NodePath("../Pipes/Row1/pipe_object"), NodePath("../Pipes/Row1/pipe_object2"), NodePath("../Pipes/Row1/pipe_object3"), NodePath("../Pipes/Row1/pipe_object4"), NodePath("../Pipes/Row2/pipe_object"), NodePath("../Pipes/Row2/pipe_object2"), NodePath("../Pipes/Row2/pipe_object3"), NodePath("../Pipes/Row2/pipe_object4"), NodePath("../Pipes/Row2/pipe_object5"), NodePath("../Pipes/Row3/pipe_object"), NodePath("../Pipes/Row3/pipe_object2"), NodePath("../Pipes/Row3/pipe_object3"), NodePath("../Pipes/Row3/pipe_object4"), NodePath("../Pipes/Row3/pipe_object5"), NodePath("../Pipes/Row4/pipe_object"), NodePath("../Pipes/Row4/pipe_object2"), NodePath("../Pipes/Row4/pipe_object3"), NodePath("../Pipes/Row4/pipe_object4"), NodePath("../Pipes/Row4/pipe_object5")]
 all_gauges = [NodePath("../Pipes/Row1/PressureGame")]
 
@@ -76,77 +76,77 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.096325874, -0.2, 1.3000001
 
 [node name="Row1" type="Node3D" parent="Pipes"]
 
-[node name="pipe_object" parent="Pipes/Row1" instance=ExtResource("4_d04ik")]
+[node name="pipe_object" parent="Pipes/Row1" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -2, 1.7106414, 0)
 
-[node name="pipe_object2" parent="Pipes/Row1" instance=ExtResource("4_d04ik")]
+[node name="pipe_object2" parent="Pipes/Row1" instance=ExtResource("5_uix74")]
 transform = Transform3D(1.9106856e-16, 0.1, 4.371139e-09, 4.371139e-09, -4.371139e-09, 0.1, 0.1, 0, -4.371139e-09, -1, 1.7106414, 0)
 
-[node name="pipe_object3" parent="Pipes/Row1" instance=ExtResource("4_d04ik")]
+[node name="pipe_object3" parent="Pipes/Row1" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0, 1.7106414, 0)
 
-[node name="pipe_object4" parent="Pipes/Row1" instance=ExtResource("4_d04ik")]
+[node name="pipe_object4" parent="Pipes/Row1" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, 1.7106414, 0)
 
-[node name="PressureGame" parent="Pipes/Row1" instance=ExtResource("5_73w5w")]
+[node name="PressureGame" parent="Pipes/Row1" instance=ExtResource("6_hu5d5")]
 transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 2.146572, 1.8104014, 0)
 
 [node name="Row2" type="Node3D" parent="Pipes"]
 
-[node name="pipe_object" parent="Pipes/Row2" instance=ExtResource("4_d04ik")]
+[node name="pipe_object" parent="Pipes/Row2" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -2, 0.7106414, 0)
 
-[node name="pipe_object2" parent="Pipes/Row2" instance=ExtResource("4_d04ik")]
+[node name="pipe_object2" parent="Pipes/Row2" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1, 0.7106414, 0)
 
-[node name="pipe_object3" parent="Pipes/Row2" instance=ExtResource("4_d04ik")]
+[node name="pipe_object3" parent="Pipes/Row2" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0, 0.7106414, 0)
 
-[node name="pipe_object4" parent="Pipes/Row2" instance=ExtResource("4_d04ik")]
+[node name="pipe_object4" parent="Pipes/Row2" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, 0.7106414, 0)
 
-[node name="pipe_object5" parent="Pipes/Row2" instance=ExtResource("4_d04ik")]
+[node name="pipe_object5" parent="Pipes/Row2" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2, 0.7106414, 0)
 
 [node name="Row3" type="Node3D" parent="Pipes"]
 
-[node name="pipe_object" parent="Pipes/Row3" instance=ExtResource("4_d04ik")]
+[node name="pipe_object" parent="Pipes/Row3" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -2, -0.28935868, 0)
 
-[node name="pipe_object2" parent="Pipes/Row3" instance=ExtResource("4_d04ik")]
+[node name="pipe_object2" parent="Pipes/Row3" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1, -0.28935868, 0)
 
-[node name="pipe_object3" parent="Pipes/Row3" instance=ExtResource("4_d04ik")]
+[node name="pipe_object3" parent="Pipes/Row3" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0, -0.28935868, 0)
 
-[node name="pipe_object4" parent="Pipes/Row3" instance=ExtResource("4_d04ik")]
+[node name="pipe_object4" parent="Pipes/Row3" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, -0.28935868, 0)
 
-[node name="pipe_object5" parent="Pipes/Row3" instance=ExtResource("4_d04ik")]
+[node name="pipe_object5" parent="Pipes/Row3" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2, -0.28935868, 0)
 
 [node name="Row4" type="Node3D" parent="Pipes"]
 
-[node name="pipe_object" parent="Pipes/Row4" instance=ExtResource("4_d04ik")]
+[node name="pipe_object" parent="Pipes/Row4" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -2, -1.2893586, 0)
 
-[node name="pipe_object2" parent="Pipes/Row4" instance=ExtResource("4_d04ik")]
+[node name="pipe_object2" parent="Pipes/Row4" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1, -1.2893586, 0)
 
-[node name="pipe_object3" parent="Pipes/Row4" instance=ExtResource("4_d04ik")]
+[node name="pipe_object3" parent="Pipes/Row4" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0, -1.2893586, 0)
 
-[node name="pipe_object4" parent="Pipes/Row4" instance=ExtResource("4_d04ik")]
+[node name="pipe_object4" parent="Pipes/Row4" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, -1.2893586, 0)
 
-[node name="pipe_object5" parent="Pipes/Row4" instance=ExtResource("4_d04ik")]
+[node name="pipe_object5" parent="Pipes/Row4" instance=ExtResource("5_uix74")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2, -1.2893586, 0)
 
 [node name="Row5" type="Node3D" parent="Pipes"]
 
 [node name="TotalView" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05570793, 0, 7.855209)
-script = ExtResource("5_rprox")
+script = ExtResource("7_17rc7")
 priority = 1
 tween_resource = SubResource("Resource_73w5w")
 
@@ -170,16 +170,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7076678, -2.1779156, 2.1994
 mesh = SubResource("PlaneMesh_w1qmb")
 surface_material_override/0 = SubResource("StandardMaterial3D_c805a")
 
-[node name="Cabinet" parent="." instance=ExtResource("10_c805a")]
+[node name="Cabinet" parent="." instance=ExtResource("10_bfpmo")]
 transform = Transform3D(0.755, 0, 0, 0, 0.755, 0, 0, 0, 0.755, -3.9657207, -2.128692, 1.7496486)
 
-[node name="Cabinet2" parent="." instance=ExtResource("10_c805a")]
+[node name="Cabinet2" parent="." instance=ExtResource("10_bfpmo")]
 transform = Transform3D(0.755, 0, 0, 0, 0.755, 0, 0, 0, 0.755, -3.9657207, -0.5530127, 1.7496486)
 
-[node name="Sink" parent="." instance=ExtResource("11_5njso")]
+[node name="Sink" parent="." instance=ExtResource("11_jbpbo")]
 transform = Transform3D(-1.5736099e-08, 0, -0.36, -0.08515185, 0.34978446, 3.7221055e-09, 0.34978446, 0.08515185, -1.5289563e-08, 2.8251498, -0.6381844, 2.9562922)
 
-[node name="Wall_Destroyed" parent="." instance=ExtResource("12_5njso")]
+[node name="Wall_Destroyed" parent="." instance=ExtResource("12_p3hu2")]
 transform = Transform3D(3.1694584, 0, 0, 0, 2.261942, 0, 0, 0, 1, -0.010300636, -2.1845798, 1.4768243)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
