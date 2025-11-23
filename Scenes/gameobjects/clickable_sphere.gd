@@ -2,7 +2,7 @@ extends Area3D
 
 class_name ClickableSphere
 
-signal sphere_clicked
+signal sphere_clicked(targetPos)
 
 var isMouseOver : bool = false
 var isActive: bool = false
@@ -33,7 +33,7 @@ func _mouse_exit() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("MouseClick") == true and isMouseOver == true:
 		self.hide()
-		sphere_clicked.emit(self)
+		sphere_clicked.emit(self, self.global_position)
 
 func GetActive() -> bool:
 	return isActive

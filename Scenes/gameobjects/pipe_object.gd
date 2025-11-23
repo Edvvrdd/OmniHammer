@@ -77,7 +77,8 @@ func PickMinigame() -> void:
 			clickable_leak_obj.Activate_Clickable_Object()
 			num_leaks_actually_sprung += 1
 
-func Sphere_Clicked_Callback(_sphere : ClickableSphere) -> void:
+func Sphere_Clicked_Callback(_sphere : ClickableSphere, targetPos : Vector3) -> void:
+	
 	num_leaks_fixed += 1
 	IsMinigameComplete()
 

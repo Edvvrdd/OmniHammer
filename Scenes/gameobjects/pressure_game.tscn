@@ -30,10 +30,8 @@ metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020019531, 0.0047912598, 0.009963989)
 shape = SubResource("BoxShape3D_tbbwt")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.8146455)
-
 [node name="CDTimer" type="Timer" parent="."]
+one_shot = true
 autostart = true
 
 [connection signal="timeout" from="CDTimer" to="." method="_on_cd_timer_timeout"]

@@ -1,5 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://nmmcf7fpprut"]
+[gd_scene load_steps=3 format=3 uid="uid://nmmcf7fpprut"]
 
 [ext_resource type="PackedScene" uid="uid://dn0jxmi14vwqu" path="res://Models/Hammer/Hammer_002.fbx" id="1_b7fqb"]
+[ext_resource type="Script" uid="uid://8ru1wht0bgx3" path="res://Scenes/gameobjects/omni_hammer.gd" id="2_1e7sc"]
 
 [node name="Hammer_002" instance=ExtResource("1_b7fqb")]
+script = ExtResource("2_1e7sc")

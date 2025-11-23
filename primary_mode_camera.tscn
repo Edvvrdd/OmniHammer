@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8812csi01swp" path="res://Scenes/gameobjects/pressure_game.tscn" id="5_73w5w"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_rprox"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_d04ik"]
-[ext_resource type="PackedScene" uid="uid://dn0jxmi14vwqu" path="res://Models/Hammer/Hammer_002.fbx" id="7_d04ik"]
+[ext_resource type="PackedScene" uid="uid://nmmcf7fpprut" path="res://Scenes/gameobjects/OmniHammer.tscn" id="8_73w5w"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qnp83"]
 panorama = ExtResource("1_73w5w")
@@ -41,6 +41,9 @@ size = 4.0
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("2_cdr0u")
+
+[node name="Hammer_002" parent="WorldEnvironment/Camera3D" instance=ExtResource("8_73w5w")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.48594308, -0.28339946, -0.40544367)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="WorldEnvironment"]
 transform = Transform3D(6.0752482, 0, 0, 0, 4.4211316, 0, 0, 0, 1, 0, -0.03427722, 0.729)
@@ -132,6 +135,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05570793, 0, 5.189216)
 script = ExtResource("5_rprox")
 priority = 1
 tween_resource = SubResource("Resource_73w5w")
-
-[node name="Hammer_002" parent="." instance=ExtResource("7_d04ik")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.3775148, 1.3573012, 1.624868)
