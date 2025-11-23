@@ -11,7 +11,6 @@ enum pipe_states {
 }
 var state : pipe_states = pipe_states.NEW
 
-
 enum pipe_type {
 	STRAIGHT,
 	CORNER,

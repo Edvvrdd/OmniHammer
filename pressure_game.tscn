@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://8812csi01swp"]
+
+[ext_resource type="Script" uid="uid://d0ju32bw8bdpl" path="res://pressure_game.gd" id="1_5qosa"]
+[ext_resource type="PackedScene" uid="uid://buxhxx2wjc23x" path="res://PressureGauge.tscn" id="1_i4o4v"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_tbbwt"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_erm1s"]
+
+[sub_resource type="Resource" id="Resource_c13w8"]
+script = ExtResource("4_erm1s")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbbwt"]
+size = Vector3(2.2216797, 2.109314, 0.9623718)
+
+[node name="PressureGame" type="Area3D"]
+script = ExtResource("1_5qosa")
+
+[node name="Pressure_Gauge" parent="." instance=ExtResource("1_i4o4v")]
+
+[node name="Pressure_Needle" parent="Pressure_Gauge" index="1"]
+transform = Transform3D(-0.61881995, -0.78553295, 0, 0.7855332, -0.61881983, 0, 0, 0, 1.0000002, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.1285768)
+current = true
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.9540415)
+script = ExtResource("3_tbbwt")
+tween_resource = SubResource("Resource_c13w8")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020019531, 0.0047912598, 0.009963989)
+shape = SubResource("BoxShape3D_tbbwt")
+
+[editable path="Pressure_Gauge"]

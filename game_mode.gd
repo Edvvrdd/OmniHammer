@@ -3,6 +3,7 @@ extends Node
 class_name PipeGameMode
 
 @export var all_pipes : Array[PipeObject]
+@export var all_gauges : Array[GaugeObject]
 @export var timeBetweenLeaks_start : float = 10
 @export var timeBetweenLeaks_ramp : float = 0.8
 @export var timeBetweenLeaks_min : float = 1

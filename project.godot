@@ -33,7 +33,7 @@ movie_writer/movie_file="C:/Users/edwar/Plumbing.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/script_splitter/plugin.cfg")
 
 [input]
 
