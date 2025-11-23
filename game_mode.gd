@@ -52,6 +52,7 @@ func FloodRoom() -> void:
 	print(totalFloodProgress)
 
 func PipeFixed_Callback() -> void:
-	floodProgressPerSecond -= leakFloodAmnt?	leak_loop_sfx.stop()
+	floodProgressPerSecond -= leakFloodAmnt
+	leak_loop_sfx.stop()
 	pass
 	#TODO ZOOM CAMERA OUT
