@@ -11,11 +11,11 @@ enum pipe_states {
 }
 var state : pipe_states = pipe_states.NEW
 
-enum pipe_type {
-	STRAIGHT,
-	CORNER,
-}
-@export var pipe_type_to_use : pipe_type = pipe_type.STRAIGHT
+#enum pipe_type {
+	#STRAIGHT,
+	#CORNER,
+#}
+#@export var pipe_type_to_use : pipe_type = pipe_type.STRAIGHT
 @onready var phantom_camera_3d = $PhantomCamera3D
 
 var isFocus : bool = false
@@ -33,12 +33,12 @@ func _ready() -> void:
 	Hide_PipeHitbox()
 	TogglePipeHitbox(false)
 	
-	if pipe_type_to_use == pipe_type.STRAIGHT:
-		$Pipe_Straight.show()
-		$Pipe_Corner.hide()
-	if pipe_type_to_use == pipe_type.CORNER:
-		$Pipe_Straight.hide()
-		$Pipe_Corner.show()
+	#if pipe_type_to_use == pipe_type.STRAIGHT:
+		#$Pipe_Straight.show()
+		#$Pipe_Corner.hide()
+	#if pipe_type_to_use == pipe_type.CORNER:
+		#$Pipe_Straight.hide()
+		#$Pipe_Corner.show()
 	
 	#hides all leak spots
 	for i in range(0, all_clickable_objs.size()):
@@ -72,7 +72,7 @@ func PickMinigame() -> void:
 	num_leaks_sprung = randi_range(1, all_clickable_objs.size())
 	
 	for i in range(0, num_leaks_sprung):
-		var clickable_leak_obj = all_clickable_objs.pick_random()
+		var clickable_leak_obj : ClickableSphere = all_clickable_objs.pick_random()
 		if !clickable_leak_obj.GetActive():
 			clickable_leak_obj.Activate_Clickable_Object()
 			num_leaks_actually_sprung += 1
