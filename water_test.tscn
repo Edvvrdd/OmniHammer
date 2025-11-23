@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://cthauchg2csqc"]
+
+[ext_resource type="Shader" uid="uid://dubbp5s4q156c" path="res://Models/ocean.gdshader" id="1_2hdfl"]
+[ext_resource type="Shader" uid="uid://cxo44sem5ws82" path="res://Models/water_2.gdshader" id="2_2hdfl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6kuhc"]
+render_priority = 0
+shader = ExtResource("1_2hdfl")
+shader_parameter/wave_1 = Vector4(0.3, 4, 0.2, 0.6)
+shader_parameter/wave_2 = Vector4(-0.26, -0.19, 0.01, 0.47)
+shader_parameter/wave_3 = Vector4(-7.67, 5.63, 0.1, 0.38)
+shader_parameter/wave_4 = Vector4(-0.42, -1.63, 0.1, 0.28)
+shader_parameter/wave_5 = Vector4(1.66, 0.07, 0.15, 1.81)
+shader_parameter/wave_6 = Vector4(1.2, 1.14, 0.01, 0.33)
+shader_parameter/wave_7 = Vector4(-1.6, 7.3, 0.11, 0.73)
+shader_parameter/wave_8 = Vector4(-0.42, -1.63, 0.15, 1.52)
+shader_parameter/time_factor = 1.0
+shader_parameter/noise_zoom = 2.0
+shader_parameter/noise_amp = 1.0
+shader_parameter/base_water_color = Color(0.25664228, 0.61444277, 1, 1)
+shader_parameter/fresnel_water_color = Color(0.30548126, 0.9019892, 0.9999998, 1)
+shader_parameter/deep_water_color = Color(0.1223133, 0.35863125, 1, 1)
+shader_parameter/shallow_water_color = Color(1, 1, 1, 1)
+shader_parameter/beers_law = 0.5
+shader_parameter/depth_offset = -1.2
+shader_parameter/near = 7.0
+shader_parameter/far = 10000.0
+shader_parameter/edge_texture_scale = 3.5
+shader_parameter/edge_texture_offset = 1.0
+shader_parameter/edge_texture_speed = 0.1
+shader_parameter/edge_foam_intensity = 2.0
+shader_parameter/edge_fade_start = -3.0
+shader_parameter/edge_fade_end = 6.6
+shader_parameter/peak_height_threshold = 1.0
+shader_parameter/peak_color = Vector3(1, 1, 1)
+shader_parameter/peak_intensity = 1.0
+shader_parameter/foam_intensity = 1.0
+shader_parameter/foam_scale = 1.0
+shader_parameter/metallic = 0.6
+shader_parameter/roughness = 0.045
+shader_parameter/uv_scale_text_a = 0.1
+shader_parameter/uv_speed_text_a = Vector2(0.42, 0.3)
+shader_parameter/uv_scale_text_b = 0.6
+shader_parameter/uv_speed_text_b = Vector2(0.15, 0.1)
+shader_parameter/normal_strength = 1.0
+shader_parameter/uv_sampler_scale = 0.3
+shader_parameter/blend_factor = 0.28
+shader_parameter/perturbation_strength = 1.0
+shader_parameter/perturbation_time = 0.3
+shader_parameter/caustics_intensity = 15.0
+shader_parameter/num_caustic_layers = 16.0
+shader_parameter/caustic_distortion_strength = 0.001
+
+[sub_resource type="BoxMesh" id="BoxMesh_rqfsj"]
+material = SubResource("ShaderMaterial_6kuhc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rqfsj"]
+render_priority = 0
+shader = ExtResource("2_2hdfl")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.1384901, 0, 0, 0, 3.134748, -0.11417775, 0, 1.380304)
+mesh = SubResource("BoxMesh_rqfsj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5320234)
+material_override = SubResource("ShaderMaterial_rqfsj")
+mesh = SubResource("BoxMesh_rqfsj")
