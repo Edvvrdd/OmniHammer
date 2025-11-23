@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0sdxka5462oc"]
+
+[ext_resource type="Script" uid="uid://4arywyyduxyu" path="res://Scenes/gameobjects/pipe_object.gd" id="1_mlcbn"]
+[ext_resource type="PackedScene" uid="uid://drhl6si4hbbhi" path="res://Models/Pipe_Corner_Textured.fbx" id="2_llkoa"]
+[ext_resource type="PackedScene" uid="uid://bb4jwrfyps8vr" path="res://Scenes/gameobjects/clickable_sphere.tscn" id="4_xvaia"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_dgv6n"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_nd3uh"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4pmr7"]
+
+[sub_resource type="Resource" id="Resource_bmeoy"]
+script = ExtResource("6_nd3uh")
+
+[node name="pipe_object" type="Area3D" node_paths=PackedStringArray("all_clickable_objs")]
+script = ExtResource("1_mlcbn")
+all_clickable_objs = [NodePath("clickable_sphere"), NodePath("clickable_sphere4"), NodePath("clickable_sphere2"), NodePath("clickable_sphere3")]
+
+[node name="Pipe_Corner_Textured" parent="." instance=ExtResource("2_llkoa")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.01347409, -4.934883, -0.36764145)
+
+[node name="clickable_sphere" parent="." instance=ExtResource("4_xvaia")]
+transform = Transform3D(-0.99997765, 0, 0.0066846428, 0, 1, 0, -0.0066846428, 0, -0.99997765, 0.31478882, -0.5625626, 2.332151)
+
+[node name="clickable_sphere4" parent="." instance=ExtResource("4_xvaia")]
+transform = Transform3D(-0.99997765, 0, 0.0066846428, 0, 1, 0, -0.0066846428, 0, -0.99997765, 0.5255241, -3.287281, -1.1080148)
+
+[node name="clickable_sphere2" parent="." instance=ExtResource("4_xvaia")]
+transform = Transform3D(-0.99997765, 0, 0.0066846428, 0, 1, 0, -0.0066846428, 0, -0.99997765, -0.5043444, -4.271745, 0.28553605)
+
+[node name="clickable_sphere3" parent="." instance=ExtResource("4_xvaia")]
+transform = Transform3D(-0.99997765, 0, 0.0066846428, 0, 1, 0, -0.0066846428, 0, -0.99997765, -0.5284003, 0.7130152, 3.842765)
+
+[node name="pipe_hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("SphereShape3D_4pmr7")
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.250439, 0, 0)
+script = ExtResource("5_dgv6n")
+tween_resource = SubResource("Resource_bmeoy")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"

@@ -1,17 +1,20 @@
-[gd_scene load_steps=21 format=3 uid="uid://coso4ggq0us2k"]
+[gd_scene load_steps=20 format=3 uid="uid://coso4ggq0us2k"]
 
 [ext_resource type="Texture2D" uid="uid://dg210d1u606ux" path="res://Models/modern_bathroom_4k.exr" id="1_73w5w"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_cdr0u"]
 [ext_resource type="Script" uid="uid://c301v2a52rq6m" path="res://game_mode.gd" id="3_rprox"]
 [ext_resource type="PackedScene" uid="uid://t6m1pq5ecl6w" path="res://Scenes/gameobjects/pipe_object.tscn" id="4_d04ik"]
+[ext_resource type="PackedScene" uid="uid://bscgkyhjcsrv2" path="res://Models/Wall/Wall_005.fbx" id="4_mqi0t"]
 [ext_resource type="PackedScene" uid="uid://8812csi01swp" path="res://Scenes/gameobjects/pressure_game.tscn" id="5_73w5w"]
+[ext_resource type="PackedScene" uid="uid://68n87ri3n3o6" path="res://Models/Pipe_None_Extra.fbx" id="5_ovu18"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_rprox"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_d04ik"]
+[ext_resource type="PackedScene" uid="uid://cxaecg535pl66" path="res://Scenes/gameobjects/pipe_object_cornerL.tscn" id="7_w1qmb"]
 [ext_resource type="PackedScene" uid="uid://nmmcf7fpprut" path="res://Scenes/gameobjects/OmniHammer.tscn" id="8_73w5w"]
-[ext_resource type="Texture2D" uid="uid://dtw0ntwttns1y" path="res://Models/TH_Pavement_baseColor.png" id="9_qnp83"]
-[ext_resource type="PackedScene" uid="uid://3nrmx7p1skab" path="res://Models/Cabinet.fbx" id="10_c805a"]
-[ext_resource type="PackedScene" uid="uid://cxmkcdhp37lac" path="res://Models/Sink.fbx" id="11_5njso"]
-[ext_resource type="PackedScene" uid="uid://t0ud07chrtyv" path="res://Models/Wall_Destroyed.fbx" id="12_5njso"]
+[ext_resource type="PackedScene" uid="uid://d0sdxka5462oc" path="res://Scenes/gameobjects/pipe_object_cornerR.tscn" id="8_c805a"]
+[ext_resource type="PackedScene" uid="uid://b5vgplfs3ksjo" path="res://Scenes/gameobjects/pipe_object_cross.tscn" id="9_c805a"]
+[ext_resource type="PackedScene" uid="uid://bor8o01hbt6w5" path="res://Models/Pipe_Straight_Textured.fbx" id="12_hk2oh"]
+[ext_resource type="PackedScene" uid="uid://cp20edr332l23" path="res://Scenes/gameobjects/pipe_object_horizontal.tscn" id="13_stk7g"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qnp83"]
 panorama = ExtResource("1_73w5w")
@@ -23,11 +26,6 @@ sky_material = SubResource("PanoramaSkyMaterial_qnp83")
 background_mode = 2
 background_energy_multiplier = 0.3
 sky = SubResource("Sky_w1qmb")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtcn5"]
-albedo_color = Color(0.06640833, 0.059841767, 0.047797106, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ijcbb"]
 
 [sub_resource type="Resource" id="Resource_73w5w"]
 script = ExtResource("6_d04ik")
@@ -65,85 +63,88 @@ transform = Transform3D(6.0752482, 0, 0, 0, 4.4211316, 0, 0, 0, 1, 0, -0.0342772
 material_override = SubResource("StandardMaterial3D_dtcn5")
 mesh = SubResource("BoxMesh_ijcbb")
 skeleton = NodePath("")
+[node name="Wall_007" parent="WorldEnvironment" instance=ExtResource("4_mqi0t")]
+transform = Transform3D(1, 0, 0, 0, 1.876496, 0, 0, 0, 1, -1.7911291, -2.4409757, 1.104822)
+
+[node name="Wall_008" parent="WorldEnvironment" instance=ExtResource("4_mqi0t")]
+transform = Transform3D(1, 0, 0, 0, 1.876496, 0, 0, 0, 1, 0.20887089, -2.4409757, 1.104822)
+
+[node name="Wall_009" parent="WorldEnvironment" instance=ExtResource("4_mqi0t")]
+transform = Transform3D(1, 0, 0, 0, 1.876496, 0, 0, 0, 1, 2.208871, -2.4409757, 1.104822)
+
+[node name="Pipe_None_Extra" parent="WorldEnvironment" instance=ExtResource("5_ovu18")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.736752, -3.6415648, 0.45641637)
 
 [node name="GameMode" type="Node" parent="." node_paths=PackedStringArray("all_pipes", "all_gauges")]
 script = ExtResource("3_rprox")
-all_pipes = [NodePath("../Pipes/Row1/pipe_object"), NodePath("../Pipes/Row1/pipe_object2"), NodePath("../Pipes/Row1/pipe_object3"), NodePath("../Pipes/Row1/pipe_object4"), NodePath("../Pipes/Row2/pipe_object"), NodePath("../Pipes/Row2/pipe_object2"), NodePath("../Pipes/Row2/pipe_object3"), NodePath("../Pipes/Row2/pipe_object4"), NodePath("../Pipes/Row2/pipe_object5"), NodePath("../Pipes/Row3/pipe_object"), NodePath("../Pipes/Row3/pipe_object2"), NodePath("../Pipes/Row3/pipe_object3"), NodePath("../Pipes/Row3/pipe_object4"), NodePath("../Pipes/Row3/pipe_object5"), NodePath("../Pipes/Row4/pipe_object"), NodePath("../Pipes/Row4/pipe_object2"), NodePath("../Pipes/Row4/pipe_object3"), NodePath("../Pipes/Row4/pipe_object4"), NodePath("../Pipes/Row4/pipe_object5")]
-all_gauges = [NodePath("../Pipes/Row1/PressureGame")]
+all_pipes = [NodePath("../Pipes/pipe_object3"), NodePath("../Pipes/pipe_object6"), NodePath("../Pipes/pipe_object4"), NodePath("../Pipes/pipe_object5"), NodePath("../Pipes/pipe_object9"), NodePath("../Pipes/pipe_object10"), NodePath("../Pipes/pipe_object11"), NodePath("../Pipes/pipe_object12"), NodePath("../Pipes/pipe_object17"), NodePath("../Pipes/pipe_object18"), NodePath("../Pipes/pipe_object19"), NodePath("../Pipes/pipe_object13"), NodePath("../Pipes/pipe_object14"), NodePath("../Pipes/pipe_object7"), NodePath("../Pipes/pipe_object8"), NodePath("../Pipes/pipe_object"), NodePath("../Pipes/pipe_object2"), NodePath("../Pipes/pipe_object16")]
+all_gauges = [NodePath("../Pipes/PressureGame"), NodePath("../Pipes/PressureGame2")]
 
 [node name="Pipes" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.096325874, -0.2, 1.3000001)
 
-[node name="Row1" type="Node3D" parent="Pipes"]
+[node name="PressureGame" parent="Pipes" instance=ExtResource("5_73w5w")]
+transform = Transform3D(0.18618508, 0, 0, 0, 0.18618508, 0, 0, 0, 0.37, 2.0435863, 1.3774035, 0.037077546)
 
-[node name="pipe_object" parent="Pipes/Row1" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -2, 1.7106414, 0)
-pipe_type_to_use = 1
+[node name="PressureGame2" parent="Pipes" instance=ExtResource("5_73w5w")]
+transform = Transform3D(0.40637285, 0, 0, 0, 0.40637285, 0, 0, 0, 0.37, -1.8862563, -1.1803254, 0.005908251)
 
-[node name="pipe_object2" parent="Pipes/Row1" instance=ExtResource("4_d04ik")]
-transform = Transform3D(1.9106856e-16, 0.1, 4.371139e-09, 4.371139e-09, -4.371139e-09, 0.1, 0.1, 0, -4.371139e-09, -1, 1.7106414, 0)
+[node name="pipe_object3" parent="Pipes" instance=ExtResource("4_d04ik")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, 1.715, 0.003)
 
-[node name="pipe_object3" parent="Pipes/Row1" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0, 1.7106414, 0)
+[node name="pipe_object6" parent="Pipes" instance=ExtResource("7_w1qmb")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -0.99711776, 0.71847624, 0.017104149)
 
-[node name="pipe_object4" parent="Pipes/Row1" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, 1.7106414, 0)
+[node name="pipe_object4" parent="Pipes" instance=ExtResource("8_c805a")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -2.0343995, 0.7050343, 0.0021220446)
 
-[node name="PressureGame" parent="Pipes/Row1" instance=ExtResource("5_73w5w")]
-transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 2.146572, 1.8104014, 0)
+[node name="pipe_object5" parent="Pipes" instance=ExtResource("8_c805a")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -0.03439951, 1.7050344, 0.0021220446)
 
-[node name="Row2" type="Node3D" parent="Pipes"]
+[node name="pipe_object9" parent="Pipes" instance=ExtResource("4_d04ik")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -0.00032615662, -0.28402156, 0.002828002)
 
-[node name="pipe_object" parent="Pipes/Row2" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -2, 0.7106414, 0)
+[node name="pipe_object10" parent="Pipes" instance=ExtResource("4_d04ik")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, -0.284, 0.003)
 
-[node name="pipe_object2" parent="Pipes/Row2" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1, 0.7106414, 0)
+[node name="pipe_object11" parent="Pipes" instance=ExtResource("4_d04ik")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -0.00032615662, -1.2829055, 0.002828002)
 
-[node name="pipe_object3" parent="Pipes/Row2" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0, 0.7106414, 0)
+[node name="pipe_object12" parent="Pipes" instance=ExtResource("4_d04ik")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, -1.283, 0.003)
 
-[node name="pipe_object4" parent="Pipes/Row2" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, 0.7106414, 0)
+[node name="pipe_object17" parent="Pipes" instance=ExtResource("4_d04ik")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2.0603368, 0.7162104, 0.002828002)
 
-[node name="pipe_object5" parent="Pipes/Row2" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2, 0.7106414, 0)
+[node name="pipe_object18" parent="Pipes" instance=ExtResource("4_d04ik")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2.0603368, -0.28402156, 0.002828002)
 
-[node name="Row3" type="Node3D" parent="Pipes"]
+[node name="pipe_object19" parent="Pipes" instance=ExtResource("4_d04ik")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2.0603368, -1.2829055, 0.002828002)
 
-[node name="pipe_object" parent="Pipes/Row3" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -2, -0.28935868, 0)
+[node name="pipe_object13" parent="Pipes" instance=ExtResource("4_d04ik")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1.9955876, -0.28402156, 0.002828002)
 
-[node name="pipe_object2" parent="Pipes/Row3" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1, -0.28935868, 0)
+[node name="pipe_object14" parent="Pipes" instance=ExtResource("4_d04ik")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1, -0.284, 0.003)
 
-[node name="pipe_object3" parent="Pipes/Row3" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0, -0.28935868, 0)
+[node name="pipe_object7" parent="Pipes" instance=ExtResource("9_c805a")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -0.0004223585, 0.72303003, -0.0007728338)
 
-[node name="pipe_object4" parent="Pipes/Row3" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, -0.28935868, 0)
+[node name="pipe_object8" parent="Pipes" instance=ExtResource("9_c805a")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0.99957764, 0.72303003, -0.0007728338)
 
-[node name="pipe_object5" parent="Pipes/Row3" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2, -0.28935868, 0)
+[node name="Pipe_Straight_Textured" parent="Pipes" instance=ExtResource("12_hk2oh")]
+transform = Transform3D(-4.371139e-09, -0.050357435, 0, 0.1, -2.2011934e-09, 0, 0, 0, 0.1, 1.9987789, 0.72187924, -0.01927495)
 
-[node name="Row4" type="Node3D" parent="Pipes"]
+[node name="pipe_object" parent="Pipes" instance=ExtResource("13_stk7g")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1.9755232, 1.7044271, 0.048865795)
 
-[node name="pipe_object" parent="Pipes/Row4" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -2, -1.2893586, 0)
+[node name="pipe_object2" parent="Pipes" instance=ExtResource("13_stk7g")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -0.97552323, 1.7044271, 0.048865795)
 
-[node name="pipe_object2" parent="Pipes/Row4" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -1, -1.2893586, 0)
-
-[node name="pipe_object3" parent="Pipes/Row4" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 0, -1.2893586, 0)
-
-[node name="pipe_object4" parent="Pipes/Row4" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1, -1.2893586, 0)
-
-[node name="pipe_object5" parent="Pipes/Row4" instance=ExtResource("4_d04ik")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 2, -1.2893586, 0)
-
-[node name="Row5" type="Node3D" parent="Pipes"]
+[node name="pipe_object16" parent="Pipes" instance=ExtResource("8_c805a")]
+transform = Transform3D(1.9106856e-16, 0.1, 4.371139e-09, 4.371139e-09, -4.371139e-09, 0.1, 0.1, 0, -4.371139e-09, -1.0093983, -1.2461433, 0)
 
 [node name="TotalView" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05570793, 0, 7.855209)
