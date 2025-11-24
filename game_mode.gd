@@ -6,6 +6,9 @@ class_name PipeGameMode
 @export var all_gauges : Array[GaugeObject]
 @export var timeBetweenLeaks_start : float = 10
 @export var timeBetweenLeaks_ramp : float = 0.8
+@export var totalFloodProgress : float = 0.0
+@export var floodProgressPerSecond : float = 0.0
+@export var leakFloodAmnt : float = 0.001
 @export var timeBetweenLeaks_min : float = 1
 @export var num_leaksAtOnce : int = 1
 var timer : Timer
@@ -22,6 +25,12 @@ func _ready() -> void:
 	
 	timeBetweenLeaks_Current = timeBetweenLeaks_start
 	Timer_Start()
+	
+	#Spawns leak at start
+	#for i in range(0, num_leaksAtOnce):
+		#var pipe = all_pipes.pick_random()
+		#pipe.PickMinigame()
+		#pipe.Show_PipeHitbox()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -29,19 +38,34 @@ func _process(delta: float) -> void:
 		timeBetweenLeaks_Current -= delta
 		if timeBetweenLeaks_Current <= 0:
 			print("Activate leak")
+			floodProgressPerSecond += leakFloodAmnt
 			for i in range(0, num_leaksAtOnce):
 				var pipe = all_pipes.pick_random()
 				pipe.PickMinigame()
-				leak_loop_sfx.play()
+				#leak_loop_sfx.play()
 				pipe.Show_PipeHitbox()
 			
 			timeBetweenLeaks_start = timeBetweenLeaks_start * timeBetweenLeaks_ramp
 			timeBetweenLeaks_Current = max(timeBetweenLeaks_start, timeBetweenLeaks_min)
+	FloodRoom()
+	if totalFloodProgress >= 100.0:
+		GameEnd()
 
 func Timer_Start() -> void:
 	isTimerActive = true
+	
+func FloodRoom() -> void:
+	totalFloodProgress += floodProgressPerSecond
+	print(totalFloodProgress)
 
 func PipeFixed_Callback() -> void:
+	floodProgressPerSecond -= leakFloodAmnt
 	leak_loop_sfx.stop()
 	pass
 	#TODO ZOOM CAMERA OUT
+	
+func GameEnd() -> void:
+	print ("Game End")
+	await get_tree().create_timer(3.0).timeout
+	print ("baba booey")
+	pass
