@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfr86eqfd7d8o"]
+[gd_scene load_steps=14 format=3 uid="uid://bfr86eqfd7d8o"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_0d5ky"]
 [ext_resource type="Script" uid="uid://dha80psfiixdv" path="res://LivingRoomStart.gd" id="1_3wf2c"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_3wf2c"]
 [ext_resource type="PackedScene" uid="uid://de4ulsjohof47" path="res://Models/StartTV.tscn" id="4_7htnq"]
 [ext_resource type="Texture2D" uid="uid://dlokxmvww06sw" path="res://empty_play_room_4k.exr" id="7_rd8cm"]
+[ext_resource type="AudioStream" uid="uid://md6bjltsksth" path="res://Audio/TV_on_01.wav" id="8_8bi5o"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8bi5o"]
 panorama = ExtResource("7_rd8cm")
@@ -60,5 +61,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0544978, -2.4268446)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016540527, 0.10244751, 0)
 shape = SubResource("BoxShape3D_3wf2c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8bi5o")
 
 [connection signal="input_event" from="Area3D" to="." method="_on_start_input_event"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bswk4n406doeg"]
+[gd_scene load_steps=10 format=3 uid="uid://7xk5hk4mhcj0"]
 
 [ext_resource type="Script" uid="uid://b3s5dml2edyr0" path="res://audio_manager.gd" id="1_2nh25"]
 [ext_resource type="AudioStream" uid="uid://b1cmddra4tp5i" path="res://Audio/PipeUI.wav" id="2_d16gy"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dxwfnk4ge14f6" path="res://Audio/Stem_Mid.wav" id="5_mev0m"]
 [ext_resource type="AudioStream" uid="uid://dtrox67sbs5ij" path="res://Audio/Stem_High.wav" id="6_dyjto"]
 [ext_resource type="AudioStream" uid="uid://fw8u6rex0xav" path="res://Audio/Intro_Stinger.wav" id="7_5x0uh"]
+[ext_resource type="AudioStream" uid="uid://md6bjltsksth" path="res://Audio/TV_on_01.wav" id="8_i3n6d"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_w2pua"]
 clip_count = 5
@@ -67,3 +68,6 @@ bus = &"Sfx"
 [node name="Mx" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_w2pua")
 bus = &"Mx"
+
+[node name="Tv" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_i3n6d")

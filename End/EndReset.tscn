@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcpnht1cfi2qa"]
+
+[ext_resource type="Script" uid="uid://eh3gthnbij72" path="res://End/end_reset.gd" id="1_gd5lt"]
+[ext_resource type="PackedScene" uid="uid://bfr86eqfd7d8o" path="res://StartMenu.tscn" id="2_cf2yl"]
+[ext_resource type="AudioStream" uid="uid://y2ecsjpj6krx" path="res://End/53 - Television Continuous Tone On Television.wav" id="3_6qlvy"]
+[ext_resource type="Texture2D" uid="uid://djo6s7hnc3uwi" path="res://End/End.png" id="4_ss835"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gd5lt")
+Menu = ExtResource("2_cf2yl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6qlvy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ss835")
+expand_mode = 3
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

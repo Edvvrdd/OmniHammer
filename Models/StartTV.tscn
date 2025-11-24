@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://du10ocnc66ysm" path="res://Models/CRT_Wider.fbx" id="1_elydw"]
 [ext_resource type="Shader" uid="uid://bjdbeuqrqlqnn" path="res://Models/CRT.gdshader" id="2_cdd8s"]
-[ext_resource type="Texture2D" uid="uid://b7m6pgclvkkpj" path="res://Models/StartTV.png" id="3_mb4sc"]
+[ext_resource type="Texture2D" uid="uid://dkhtul3w6uos7" path="res://TVStartScreen.png" id="3_n0igb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tncqr"]
 render_priority = 0
@@ -12,8 +12,8 @@ shader_parameter/pixel_size = 1.5
 shader_parameter/scanline_strength = 0.2
 shader_parameter/subpixel_strength = 0.6
 shader_parameter/glow_intensity = 0.3
-shader_parameter/albedo_texture = ExtResource("3_mb4sc")
-shader_parameter/tex_offset = Vector2(1.87, 0)
+shader_parameter/albedo_texture = ExtResource("3_n0igb")
+shader_parameter/tex_offset = Vector2(1.84, 0.04)
 shader_parameter/tex_scale = Vector2(0.2, 0.2)
 shader_parameter/tex_rotation_degrees = -90.0
 
