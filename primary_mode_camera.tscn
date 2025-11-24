@@ -63,6 +63,13 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.736752, -3.6415648, 
 script = ExtResource("3_rprox")
 all_pipes = [NodePath("../Pipes/pipe_object3"), NodePath("../Pipes/pipe_object6"), NodePath("../Pipes/pipe_object4"), NodePath("../Pipes/pipe_object5"), NodePath("../Pipes/pipe_object9"), NodePath("../Pipes/pipe_object10"), NodePath("../Pipes/pipe_object11"), NodePath("../Pipes/pipe_object12"), NodePath("../Pipes/pipe_object17"), NodePath("../Pipes/pipe_object18"), NodePath("../Pipes/pipe_object19"), NodePath("../Pipes/pipe_object13"), NodePath("../Pipes/pipe_object14"), NodePath("../Pipes/pipe_object7"), NodePath("../Pipes/pipe_object8"), NodePath("../Pipes/pipe_object"), NodePath("../Pipes/pipe_object2"), NodePath("../Pipes/pipe_object16")]
 all_gauges = [NodePath("../Pipes/PressureGame"), NodePath("../Pipes/PressureGame2")]
+timeBetweenLeaks_start = null
+timeBetweenLeaks_ramp = null
+totalFloodProgress = null
+floodProgressPerSecond = null
+leakFloodAmnt = null
+timeBetweenLeaks_min = null
+num_leaksAtOnce = null
 
 [node name="Pipes" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.096325874, -0.2, 1.3000001)

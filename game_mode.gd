@@ -2,6 +2,7 @@ extends Node
 
 class_name PipeGameMode
 
+var EndScene = preload("res://End/EndReset.tscn")
 @export var all_pipes : Array[PipeObject]
 @export var all_gauges : Array[GaugeObject]
 @export var timeBetweenLeaks_start : float = 10
@@ -15,6 +16,7 @@ var timer : Timer
 var timeBetweenLeaks_Current : float
 var isTimerActive : bool = false
 @onready var leak_loop_sfx: AudioStreamPlayer3D = $"../Pipes/LeakLoopSFX"
+@onready var hammer_002: Node3D = $"../WorldEnvironment/Camera3D/Hammer_002"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -48,7 +50,7 @@ func _process(delta: float) -> void:
 			timeBetweenLeaks_start = timeBetweenLeaks_start * timeBetweenLeaks_ramp
 			timeBetweenLeaks_Current = max(timeBetweenLeaks_start, timeBetweenLeaks_min)
 	FloodRoom()
-	if totalFloodProgress >= 100.0:
+	if totalFloodProgress >= 60.0:
 		GameEnd()
 
 func Timer_Start() -> void:
@@ -65,7 +67,5 @@ func PipeFixed_Callback() -> void:
 	#TODO ZOOM CAMERA OUT
 	
 func GameEnd() -> void:
-	print ("Game End")
-	await get_tree().create_timer(3.0).timeout
-	print ("baba booey")
-	pass
+	#await get_tree().create_timer(3.0).timeout
+	get_tree().change_scene_to_packed(EndScene)

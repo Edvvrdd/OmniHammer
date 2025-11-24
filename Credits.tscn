@@ -1,0 +1,27 @@
+[gd_scene load_steps=8 format=3 uid="uid://raw5lxxi11ie"]
+
+[ext_resource type="PackedScene" uid="uid://um30nofgphi0" path="res://Models/Picture Frame.fbx" id="1_ynf4x"]
+[ext_resource type="Texture2D" uid="uid://rwewpc8o7s0k" path="res://Models/20251123_160846.jpg" id="2_4qwwl"]
+[ext_resource type="Texture2D" uid="uid://cdi3ke3guh3va" path="res://End/creditz.jpg" id="3_obosj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obosj"]
+albedo_texture = ExtResource("2_4qwwl")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k2yj5"]
+material = SubResource("StandardMaterial3D_obosj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2yj5"]
+albedo_texture = ExtResource("3_obosj")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4qwwl"]
+material = SubResource("StandardMaterial3D_k2yj5")
+
+[node name="Picture Frame" instance=ExtResource("1_ynf4x")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(2.1793044, 0, 0, 0, -4.371139e-08, -1.3834733, 0, 1, -6.047354e-08, 0, 1.487256, 0.1507091)
+mesh = SubResource("PlaneMesh_k2yj5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(2.1412125, 0, 0, 0, -4.371139e-08, -1.427511, 0, 1, -6.2398485e-08, 4.6397834, 1.5643085, 6.83781e-08)
+mesh = SubResource("PlaneMesh_4qwwl")

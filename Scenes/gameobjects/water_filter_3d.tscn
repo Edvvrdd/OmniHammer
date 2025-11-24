@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dttgbdahxgydf"]
 
-[ext_resource type="Shader" uid="uid://c85fhy1pcn5wt" path="res://water.gdshader" id="1_7gjst"]
+[ext_resource type="Shader" path="res://water.gdshader" id="1_7gjst"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8grx8"]
 viewport_path = NodePath("Sprite3D/SubViewport")
