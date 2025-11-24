@@ -19,16 +19,16 @@ all_clickable_objs = [NodePath("clickable_sphere"), NodePath("clickable_sphere4"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 
 [node name="clickable_sphere" parent="." instance=ExtResource("3_8shu5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50839674, -0.30762613, -2.6964543)
+transform = Transform3D(-0.09780867, -5.2759828e-09, 0.9952052, 0.7844249, -0.6154139, 0.0770932, 0.6124633, 0.78820425, 0.060192835, 0.57628, 0.2615901, -2.519055)
 
 [node name="clickable_sphere4" parent="." instance=ExtResource("3_8shu5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5086733, -3.352398, 0.50683963)
+transform = Transform3D(0.39730805, 0, 0.9176853, 0, 1, 0, -0.9176853, 0, 0.39730805, 0.50680053, -2.388792, 0.11076391)
 
 [node name="clickable_sphere2" parent="." instance=ExtResource("3_8shu5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5134407, -4.3368616, -0.65662444)
+transform = Transform3D(-0.56565803, 0, 0.8246399, 0, 1, 0, -0.8246399, 0, -0.56565803, 0.5726043, -3.2645383, -0.15212679)
 
 [node name="clickable_sphere3" parent="." instance=ExtResource("3_8shu5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5137173, 0.64789844, -4.213935)
+transform = Transform3D(-0.26661602, 0, 0.96380293, -0.7517075, 0.62585545, -0.20794424, -0.60320127, -0.77993923, -0.16686308, 0.5137173, -0.2999302, -3.0841634)
 
 [node name="pipe_hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)

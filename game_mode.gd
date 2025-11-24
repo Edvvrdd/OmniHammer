@@ -26,6 +26,11 @@ func _ready() -> void:
 	timeBetweenLeaks_Current = timeBetweenLeaks_start
 	Timer_Start()
 	
+	#Spawns leak at start
+	#for i in range(0, num_leaksAtOnce):
+		#var pipe = all_pipes.pick_random()
+		#pipe.PickMinigame()
+		#pipe.Show_PipeHitbox()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -1,16 +1,45 @@
-[gd_scene load_steps=13 format=3 uid="uid://bb4jwrfyps8vr"]
+[gd_scene load_steps=20 format=3 uid="uid://bb4jwrfyps8vr"]
 
 [ext_resource type="Script" uid="uid://baxjwcwxjvlka" path="res://Scenes/gameobjects/clickable_sphere.gd" id="1_8unm6"]
+[ext_resource type="PackedScene" uid="uid://gsbpjl6kupax" path="res://Models/Gash.fbx" id="2_kgkev"]
 [ext_resource type="AudioStream" uid="uid://bs64e83ymmrot" path="res://Audio/pipe_burst_short.wav" id="2_q84wr"]
+[ext_resource type="Texture2D" uid="uid://bol8jr1jfr0c" path="res://Models/Water_Splash_Alpha.png" id="3_5e6no"]
 [ext_resource type="AudioStream" uid="uid://cvcegu03oxdht" path="res://Audio/pipe_burst_long.wav" id="3_jmilv"]
 [ext_resource type="AudioStream" uid="uid://ciwhr4ocfm7vk" path="res://Audio/pipe_leak.wav" id="4_6aord"]
 [ext_resource type="AudioStream" uid="uid://cfk2kdrvaov2q" path="res://Audio/pipe_shake_01.wav" id="5_y7nvm"]
 [ext_resource type="AudioStream" uid="uid://pql7rj3uom7" path="res://Audio/pipe_shake_02.wav" id="6_aq8va"]
 [ext_resource type="AudioStream" uid="uid://cr7jv7ojcjlmh" path="res://Audio/pipe_shake_03.wav" id="7_qfomg"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_to0da"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5e6no"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_8unm6"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vse3y"]
+
+[sub_resource type="Gradient" id="Gradient_vse3y"]
+colors = PackedColorArray(0, 0, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kl4my"]
+gradient = SubResource("Gradient_vse3y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kgkev"]
+spread = 17.06
+flatness = 1.0
+initial_velocity_min = 15.099999
+initial_velocity_max = 15.2
+scale_min = 0.5
+scale_max = 2.0
+color = Color(0, 0.45490196, 1, 1)
+color_ramp = SubResource("GradientTexture1D_kl4my")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryi5h"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("3_5e6no")
+grow_amount = 1.605
+
+[sub_resource type="QuadMesh" id="QuadMesh_5e6no"]
+material = SubResource("StandardMaterial3D_ryi5h")
+size = Vector2(0.1, 0.1)
+orientation = 0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7vtvh"]
 streams_count = 3
@@ -35,10 +64,27 @@ stream_1/volume = -3.69
 script = ExtResource("1_8unm6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_to0da")
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_5e6no")
+debug_color = Color(5.198121e-06, 0.58569723, 0.7830375, 0.41960785)
+
+[node name="Gash" parent="." instance=ExtResource("2_kgkev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.041519403, -6.413664, -0.39553595)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_8unm6")
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.06885958, 0.381028, 0)
+visibility_range_begin = 4096.0
+visibility_range_end = 4096.0
+mesh = SubResource("CapsuleMesh_vse3y")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.044020448, 0.9715696, 0.23262568, 0.28191715, -0.23546858, 0.93009526, 0.9584284, 0.024637967, -0.2842676, 0, 0, 0.30735922)
+lifetime = 0.5
+explosiveness = 0.26
+randomness = 0.44
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_kgkev")
+draw_pass_1 = SubResource("QuadMesh_5e6no")
 
 [node name="burstSFX" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamSynchronized_e7ps6")
