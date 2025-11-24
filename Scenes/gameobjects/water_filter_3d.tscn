@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dttgbdahxgydf"]
+
+[ext_resource type="Shader" uid="uid://c85fhy1pcn5wt" path="res://water.gdshader" id="1_7gjst"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8grx8"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gjst"]
+shader = ExtResource("1_7gjst")
+shader_parameter/uv_scale = 1.0
+shader_parameter/color_alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8grx8"]
+shader = ExtResource("1_7gjst")
+shader_parameter/uv_scale = 1.0
+shader_parameter/color_alpha = 0.60000000894072
+
+[node name="WaterFilter3D" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_8grx8")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+transparent_bg = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Sprite3D/SubViewport"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Sprite3D/SubViewport/CanvasLayer"]
+material = SubResource("ShaderMaterial_7gjst")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite3D/SubViewport/CanvasLayer"]
+material = SubResource("ShaderMaterial_8grx8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.0239632)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color(1, 1, 1, 0.7294118)
