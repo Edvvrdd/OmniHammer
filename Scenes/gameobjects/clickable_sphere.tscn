@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bb4jwrfyps8vr"]
+[gd_scene load_steps=12 format=3 uid="uid://bb4jwrfyps8vr"]
 
 [ext_resource type="Script" uid="uid://baxjwcwxjvlka" path="res://Scenes/gameobjects/clickable_sphere.gd" id="1_8unm6"]
 [ext_resource type="AudioStream" uid="uid://bs64e83ymmrot" path="res://Audio/pipe_burst_short.wav" id="2_q84wr"]
@@ -13,23 +13,18 @@
 [sub_resource type="SphereMesh" id="SphereMesh_8unm6"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7vtvh"]
-streams_count = 3
+streams_count = 6
 stream_0/stream = ExtResource("2_q84wr")
 stream_1/stream = ExtResource("3_jmilv")
 stream_2/stream = ExtResource("4_6aord")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xahus"]
-streams_count = 3
-stream_0/stream = ExtResource("5_y7nvm")
-stream_1/stream = ExtResource("6_aq8va")
-stream_2/stream = ExtResource("7_qfomg")
+stream_3/stream = ExtResource("5_y7nvm")
+stream_4/stream = ExtResource("6_aq8va")
+stream_5/stream = ExtResource("7_qfomg")
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_e7ps6"]
-stream_count = 2
+stream_count = 1
 stream_0/stream = SubResource("AudioStreamRandomizer_7vtvh")
 stream_0/volume = 0.0
-stream_1/stream = SubResource("AudioStreamRandomizer_xahus")
-stream_1/volume = -3.69
 
 [node name="clickable_sphere" type="Area3D"]
 script = ExtResource("1_8unm6")
