@@ -42,12 +42,14 @@ func _process(delta: float) -> void:
 			for i in range(0, num_leaksAtOnce):
 				var pipe = all_pipes.pick_random()
 				pipe.PickMinigame()
-				leak_loop_sfx.play()
+				#leak_loop_sfx.play()
 				pipe.Show_PipeHitbox()
 			
 			timeBetweenLeaks_start = timeBetweenLeaks_start * timeBetweenLeaks_ramp
 			timeBetweenLeaks_Current = max(timeBetweenLeaks_start, timeBetweenLeaks_min)
 	FloodRoom()
+	if totalFloodProgress >= 100.0:
+		GameEnd()
 
 func Timer_Start() -> void:
 	isTimerActive = true
@@ -61,3 +63,9 @@ func PipeFixed_Callback() -> void:
 	leak_loop_sfx.stop()
 	pass
 	#TODO ZOOM CAMERA OUT
+	
+func GameEnd() -> void:
+	print ("Game End")
+	await get_tree().create_timer(3.0).timeout
+	print ("baba booey")
+	pass
